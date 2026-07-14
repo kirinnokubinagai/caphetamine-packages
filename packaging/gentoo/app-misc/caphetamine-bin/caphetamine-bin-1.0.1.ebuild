@@ -1,7 +1,7 @@
 EAPI=8
 DESCRIPTION="Prevent Linux sleep while Caps Lock is on"
 HOMEPAGE="https://github.com/kirinnokubinagai/caphetamine-packages"
-SRC_URI="amd64? ( https://github.com/kirinnokubinagai/caphetamine-packages/releases/download/v1.0.0/caphetamine-linux-x86_64.tar.gz ) arm64? ( https://github.com/kirinnokubinagai/caphetamine-packages/releases/download/v1.0.0/caphetamine-linux-aarch64.tar.gz )"
+SRC_URI="amd64? ( https://github.com/kirinnokubinagai/caphetamine-packages/releases/download/v1.0.1/caphetamine-linux-x86_64.tar.gz ) arm64? ( https://github.com/kirinnokubinagai/caphetamine-packages/releases/download/v1.0.1/caphetamine-linux-aarch64.tar.gz )"
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"

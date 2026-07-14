@@ -7,10 +7,10 @@
       systems = [ "aarch64-darwin" "x86_64-darwin" "aarch64-linux" "x86_64-linux" ];
       forAllSystems = nixpkgs.lib.genAttrs systems;
       sources = {
-        "aarch64-darwin" = { url = "https://github.com/kirinnokubinagai/caphetamine-packages/releases/download/v1.0.0/Caphetamine-macos-universal.zip"; hash = "sha256-bcn7BIQr8oQCx4McmtVc0FcPTfAAV6TAAZwLgEl5qAc="; kind = "darwin"; };
-"x86_64-darwin" = { url = "https://github.com/kirinnokubinagai/caphetamine-packages/releases/download/v1.0.0/Caphetamine-macos-universal.zip"; hash = "sha256-bcn7BIQr8oQCx4McmtVc0FcPTfAAV6TAAZwLgEl5qAc="; kind = "darwin"; };
-"aarch64-linux" = { url = "https://github.com/kirinnokubinagai/caphetamine-packages/releases/download/v1.0.0/caphetamine-linux-aarch64.tar.gz"; hash = "sha256-PAsfmx4knKz2JoA533hTUgVLhLEXydz0bVY/ugdi8rM="; kind = "linux"; };
-"x86_64-linux" = { url = "https://github.com/kirinnokubinagai/caphetamine-packages/releases/download/v1.0.0/caphetamine-linux-x86_64.tar.gz"; hash = "sha256-17mGzjj5Fedk4ZOR6I/R1aJlg1wsRNyw1wvHAKHr/6k="; kind = "linux"; };
+        "aarch64-darwin" = { url = "https://github.com/kirinnokubinagai/caphetamine-packages/releases/download/v1.0.1/Caphetamine-macos-universal.zip"; hash = "sha256-YUNGiT4gloyGHCn+Moqx1woXTJrLnqzxu+BPRCQ8Pao="; kind = "darwin"; };
+"x86_64-darwin" = { url = "https://github.com/kirinnokubinagai/caphetamine-packages/releases/download/v1.0.1/Caphetamine-macos-universal.zip"; hash = "sha256-YUNGiT4gloyGHCn+Moqx1woXTJrLnqzxu+BPRCQ8Pao="; kind = "darwin"; };
+"aarch64-linux" = { url = "https://github.com/kirinnokubinagai/caphetamine-packages/releases/download/v1.0.1/caphetamine-linux-aarch64.tar.gz"; hash = "sha256-GZAJHnTvLVKm2eOGeRGr3hlhzUNgih8BYnf6WfNZdhs="; kind = "linux"; };
+"x86_64-linux" = { url = "https://github.com/kirinnokubinagai/caphetamine-packages/releases/download/v1.0.1/caphetamine-linux-x86_64.tar.gz"; hash = "sha256-a+8lZ02UIto1n2LYTEHemw4f3Isq4vzAUNjXSFwet2I="; kind = "linux"; };
       };
     in {
       packages = forAllSystems (system:
@@ -21,7 +21,7 @@
         in {
           default = pkgs.stdenvNoCC.mkDerivation {
             pname = "caphetamine";
-            version = "1.0.0";
+            version = "1.0.1";
             dontUnpack = true;
             installPhase = if source.kind == "darwin" then ''
               mkdir -p "$out/Applications" "$out/bin"

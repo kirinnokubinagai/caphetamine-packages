@@ -1,15 +1,15 @@
 class Caphetamine < Formula
   desc "Prevent Linux sleep while Caps Lock is on"
   homepage "https://github.com/kirinnokubinagai/caphetamine-packages"
-  version "1.0.0"
+  version "1.0.1"
   depends_on :linux
 
   if Hardware::CPU.arm?
-    url "https://github.com/kirinnokubinagai/caphetamine-packages/releases/download/v1.0.0/caphetamine-linux-aarch64.tar.gz"
-    sha256 "3c0b1f9b1e249cacf6268039df785352054b84b117c9dcf46d563fba0762f2b3"
+    url "https://github.com/kirinnokubinagai/caphetamine-packages/releases/download/v1.0.1/caphetamine-linux-aarch64.tar.gz"
+    sha256 "1990091e74ef2d52a6d9e3867911abde1961cd43608a1f016277fa59f359761b"
   else
-    url "https://github.com/kirinnokubinagai/caphetamine-packages/releases/download/v1.0.0/caphetamine-linux-x86_64.tar.gz"
-    sha256 "d7b986ce38f915e764e19391e88fd1d5a265835c2c44dcb0d70bc700a1ebffa9"
+    url "https://github.com/kirinnokubinagai/caphetamine-packages/releases/download/v1.0.1/caphetamine-linux-x86_64.tar.gz"
+    sha256 "6bef25674d9422da359f62d84c41de9b0e1fdc8b2ae2fcc050d8d7485c1eb762"
   end
 
   def install
