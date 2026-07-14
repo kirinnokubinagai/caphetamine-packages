@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.kirinnokubinagai.Caphetamine</id>
+  <name>Caphetamine</name>
+  <summary>Prevent Linux sleep while Caps Lock is on</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>LicenseRef-proprietary</project_license>
+  <description>
+    <p>Caphetamine keeps the computer awake while Caps Lock is on and restores the normal power settings as soon as Caps Lock is turned off.</p>
+  </description>
+  <launchable type="desktop-id">io.github.kirinnokubinagai.Caphetamine.desktop</launchable>
+  <provides><binary>caphetamine</binary></provides>
+  <url type="homepage">https://github.com/kirinnokubinagai/caphetamine-packages</url>
+  <releases><release version="1.0.0"/></releases>
+</component>

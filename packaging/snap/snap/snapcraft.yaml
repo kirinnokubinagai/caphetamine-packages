@@ -1,0 +1,66 @@
+name: caphetamine
+base: core24
+version: '1.0.0'
+summary: Prevent Linux sleep while Caps Lock is on
+description: |
+  Caphetamine keeps the computer awake while Caps Lock is on and restores
+  the normal power settings as soon as Caps Lock is turned off.
+grade: stable
+confinement: strict
+
+platforms:
+  amd64:
+  arm64:
+
+apps:
+  caphetamine:
+    command: bin/caphetamine
+    desktop: share/applications/caphetamine.desktop
+    common-id: io.github.kirinnokubinagai.Caphetamine
+    plugs:
+      - desktop
+      - desktop-legacy
+      - wayland
+      - x11
+      - hardware-observe
+      - login-session-control
+      - screen-inhibit-control
+      - autostart-config
+
+plugs:
+  autostart-config:
+    interface: personal-files
+    write:
+      - $HOME/.config/autostart/caphetamine.desktop
+
+parts:
+  caphetamine:
+    plugin: nil
+    build-packages:
+      - ca-certificates
+      - curl
+    override-pull: |
+      case "$CRAFT_ARCH_BUILD_FOR" in
+        amd64)
+          asset='caphetamine-linux-x86_64.tar.gz'
+          checksum='d7b986ce38f915e764e19391e88fd1d5a265835c2c44dcb0d70bc700a1ebffa9'
+          ;;
+        arm64)
+          asset='caphetamine-linux-aarch64.tar.gz'
+          checksum='3c0b1f9b1e249cacf6268039df785352054b84b117c9dcf46d563fba0762f2b3'
+          ;;
+        *)
+          echo "Unsupported architecture: $CRAFT_ARCH_BUILD_FOR" >&2
+          exit 1
+          ;;
+      esac
+      curl --fail --location --retry 3 \
+        "https://github.com/kirinnokubinagai/caphetamine-packages/releases/download/v1.0.0/$asset" --output caphetamine.tar.gz
+      printf '%s  %s\n' "$checksum" caphetamine.tar.gz | sha256sum --check -
+      tar --extract --gzip --file caphetamine.tar.gz --strip-components=1
+    override-build: |
+      install -Dm755 bin/caphetamine "$CRAFT_PART_INSTALL/bin/caphetamine"
+      install -Dm644 share/applications/caphetamine.desktop \
+        "$CRAFT_PART_INSTALL/share/applications/caphetamine.desktop"
+      install -Dm644 share/icons/hicolor/scalable/apps/caphetamine.svg \
+        "$CRAFT_PART_INSTALL/share/icons/hicolor/scalable/apps/caphetamine.svg"

@@ -63,6 +63,9 @@ class GenerationTests(unittest.TestCase):
                 "packaging/void/template",
                 "packaging/pkgsrc/Makefile",
                 "packaging/gentoo/app-misc/caphetamine-bin/caphetamine-bin-1.2.3.ebuild",
+                "packaging/flatpak/io.github.kirinnokubinagai.Caphetamine.json",
+                "packaging/flatpak/io.github.kirinnokubinagai.Caphetamine.metainfo.xml",
+                "packaging/snap/snap/snapcraft.yaml",
                 "manifests/latest.json",
             ):
                 self.assertTrue((output / relative).is_file(), relative)
@@ -73,6 +76,23 @@ class GenerationTests(unittest.TestCase):
 
             pkgsrc = (output / "packaging/pkgsrc/Makefile").read_text()
             self.assertIn("ONLY_FOR_PLATFORM= Linux-*-*", pkgsrc)
+
+            flatpak = json.loads(
+                (output / "packaging/flatpak/io.github.kirinnokubinagai.Caphetamine.json").read_text()
+            )
+            self.assertEqual(flatpak["runtime-version"], "25.08")
+            self.assertIn("--system-talk-name=org.freedesktop.login1", flatpak["finish-args"])
+            self.assertEqual(
+                [source["only-arches"][0] for source in flatpak["modules"][0]["sources"][:2]],
+                ["x86_64", "aarch64"],
+            )
+
+            snapcraft = (output / "packaging/snap/snap/snapcraft.yaml").read_text()
+            self.assertIn("confinement: strict", snapcraft)
+            self.assertIn("hardware-observe", snapcraft)
+            self.assertIn("login-session-control", snapcraft)
+            self.assertIn("screen-inhibit-control", snapcraft)
+            self.assertIn("CRAFT_ARCH_BUILD_FOR", snapcraft)
 
 
 if __name__ == "__main__":
