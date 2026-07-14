@@ -21,7 +21,80 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  sandbox-packages:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: ubuntu-24.04
+            release_arch: x86_64
+            snap_arch: amd64
+          - runner: ubuntu-24.04-arm
+            release_arch: aarch64
+            snap_arch: arm64
+    runs-on: ${{ matrix.runner }}
+    permissions:
+      contents: read
+    env:
+      RELEASE_TAG: ${{ github.event.release.tag_name || inputs.tag }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate sandbox package definitions
+        run: |
+          mkdir -p build/assets build/definitions
+          gh release download "$RELEASE_TAG" --dir build/assets
+          python3 scripts/create_manifest.py \
+            --version "${RELEASE_TAG#v}" \
+            --assets build/assets \
+            --output build/manifest.json
+          python3 scripts/generate_definitions.py \
+            build/manifest.json --output build/definitions
+
+      - name: Install Flatpak build tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes flatpak flatpak-builder
+          flatpak remote-add --user --if-not-exists flathub \
+            https://dl.flathub.org/repo/flathub.flatpakrepo
+          flatpak install --user --noninteractive flathub \
+            org.freedesktop.Platform//25.08 \
+            org.freedesktop.Sdk//25.08
+
+      - name: Build Flatpak bundle
+        run: |
+          manifest="build/definitions/packaging/flatpak/io.github.kirinnokubinagai.Caphetamine.json"
+          flatpak-builder --user --force-clean \
+            --repo=build/flatpak-repository \
+            build/flatpak-work "$manifest"
+          mkdir -p build/output
+          flatpak build-bundle \
+            --runtime-repo=https://dl.flathub.org/repo/flathub.flatpakrepo \
+            build/flatpak-repository \
+            "build/output/Caphetamine-linux-${{ matrix.release_arch }}.flatpak" \
+            io.github.kirinnokubinagai.Caphetamine stable
+
+      - name: Build Snap package
+        id: snapcraft
+        uses: snapcore/action-build@v1
+        with:
+          path: build/definitions/packaging/snap
+          snapcraft-args: --build-for=${{ matrix.snap_arch }}
+
+      - name: Collect Snap package
+        run: |
+          cp "${{ steps.snapcraft.outputs.snap }}" \
+            "build/output/Caphetamine-linux-${{ matrix.snap_arch }}.snap"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sandbox-packages-${{ matrix.snap_arch }}
+          path: build/output/*
+          if-no-files-found: error
+
   publish:
+    needs: sandbox-packages
     runs-on: ubuntu-24.04
     environment:
       name: github-pages
@@ -77,6 +150,13 @@ jobs:
           gopath="$(go env GOPATH)"
           export PATH="$gopath/bin:$PATH"
           scripts/build_native_packages.sh "$RELEASE_TAG" build/assets build/packages
+
+      - name: Download Flatpak and Snap packages
+        uses: actions/download-artifact@v4
+        with:
+          pattern: sandbox-packages-*
+          path: build/packages
+          merge-multiple: true
 
       - name: Build signed APT and RPM repositories
         run: scripts/build_repository_indexes.sh build/packages public

@@ -1,0 +1,53 @@
+{
+  "app-id": "io.github.kirinnokubinagai.Caphetamine",
+  "runtime": "org.freedesktop.Platform",
+  "runtime-version": "25.08",
+  "sdk": "org.freedesktop.Sdk",
+  "command": "caphetamine",
+  "finish-args": [
+    "--share=ipc",
+    "--socket=wayland",
+    "--socket=fallback-x11",
+    "--system-talk-name=org.freedesktop.login1",
+    "--talk-name=org.freedesktop.ScreenSaver",
+    "--talk-name=org.kde.StatusNotifierWatcher",
+    "--own-name=org.kde.StatusNotifierItem-*",
+    "--filesystem=xdg-config/autostart:create"
+  ],
+  "modules": [
+    {
+      "name": "caphetamine",
+      "buildsystem": "simple",
+      "build-commands": [
+        "install -Dm755 bin/caphetamine /app/bin/caphetamine",
+        "install -Dm644 share/applications/caphetamine.desktop /app/share/applications/io.github.kirinnokubinagai.Caphetamine.desktop",
+        "sed -i 's/^Exec=.*/Exec=caphetamine/' /app/share/applications/io.github.kirinnokubinagai.Caphetamine.desktop",
+        "install -Dm644 share/icons/hicolor/scalable/apps/caphetamine.svg /app/share/icons/hicolor/scalable/apps/io.github.kirinnokubinagai.Caphetamine.svg",
+        "sed -i 's/^Icon=.*/Icon=io.github.kirinnokubinagai.Caphetamine/' /app/share/applications/io.github.kirinnokubinagai.Caphetamine.desktop",
+        "install -Dm644 io.github.kirinnokubinagai.Caphetamine.metainfo.xml /app/share/metainfo/io.github.kirinnokubinagai.Caphetamine.metainfo.xml"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://github.com/kirinnokubinagai/caphetamine-packages/releases/download/v1.0.0/caphetamine-linux-x86_64.tar.gz",
+          "sha256": "d7b986ce38f915e764e19391e88fd1d5a265835c2c44dcb0d70bc700a1ebffa9",
+          "only-arches": [
+            "x86_64"
+          ]
+        },
+        {
+          "type": "archive",
+          "url": "https://github.com/kirinnokubinagai/caphetamine-packages/releases/download/v1.0.0/caphetamine-linux-aarch64.tar.gz",
+          "sha256": "3c0b1f9b1e249cacf6268039df785352054b84b117c9dcf46d563fba0762f2b3",
+          "only-arches": [
+            "aarch64"
+          ]
+        },
+        {
+          "type": "file",
+          "path": "io.github.kirinnokubinagai.Caphetamine.metainfo.xml"
+        }
+      ]
+    }
+  ]
+}

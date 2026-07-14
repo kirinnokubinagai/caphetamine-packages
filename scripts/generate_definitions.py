@@ -279,6 +279,147 @@ def main() -> None:
         ])
     write(args.output, "packaging/pkgsrc/distinfo", "\n".join(distinfo) + "\n")
 
+    app_id = "io.github.kirinnokubinagai.Caphetamine"
+    metainfo_name = f"{app_id}.metainfo.xml"
+    write(args.output, f"packaging/flatpak/{metainfo_name}", f'''
+        <?xml version="1.0" encoding="UTF-8"?>
+        <component type="desktop-application">
+          <id>{app_id}</id>
+          <name>Caphetamine</name>
+          <summary>Prevent Linux sleep while Caps Lock is on</summary>
+          <metadata_license>CC0-1.0</metadata_license>
+          <project_license>LicenseRef-proprietary</project_license>
+          <description>
+            <p>Caphetamine keeps the computer awake while Caps Lock is on and restores the normal power settings as soon as Caps Lock is turned off.</p>
+          </description>
+          <launchable type="desktop-id">{app_id}.desktop</launchable>
+          <provides><binary>caphetamine</binary></provides>
+          <url type="homepage">https://github.com/{repo}</url>
+          <releases><release version="{version}"/></releases>
+        </component>
+    ''')
+
+    flatpak_manifest = {
+        "app-id": app_id,
+        "runtime": "org.freedesktop.Platform",
+        "runtime-version": "25.08",
+        "sdk": "org.freedesktop.Sdk",
+        "command": "caphetamine",
+        "finish-args": [
+            "--share=ipc",
+            "--socket=wayland",
+            "--socket=fallback-x11",
+            "--system-talk-name=org.freedesktop.login1",
+            "--talk-name=org.freedesktop.ScreenSaver",
+            "--talk-name=org.kde.StatusNotifierWatcher",
+            "--own-name=org.kde.StatusNotifierItem-*",
+            "--filesystem=xdg-config/autostart:create",
+        ],
+        "modules": [
+            {
+                "name": "caphetamine",
+                "buildsystem": "simple",
+                "build-commands": [
+                    "install -Dm755 bin/caphetamine /app/bin/caphetamine",
+                    f"install -Dm644 share/applications/caphetamine.desktop /app/share/applications/{app_id}.desktop",
+                    f"sed -i 's/^Exec=.*/Exec=caphetamine/' /app/share/applications/{app_id}.desktop",
+                    f"install -Dm644 share/icons/hicolor/scalable/apps/caphetamine.svg /app/share/icons/hicolor/scalable/apps/{app_id}.svg",
+                    f"sed -i 's/^Icon=.*/Icon={app_id}/' /app/share/applications/{app_id}.desktop",
+                    f"install -Dm644 {metainfo_name} /app/share/metainfo/{metainfo_name}",
+                ],
+                "sources": [
+                    {
+                        "type": "archive",
+                        "url": f"{release}/{x64}",
+                        "sha256": assets[x64]["sha256"],
+                        "only-arches": ["x86_64"],
+                    },
+                    {
+                        "type": "archive",
+                        "url": f"{release}/{arm64}",
+                        "sha256": assets[arm64]["sha256"],
+                        "only-arches": ["aarch64"],
+                    },
+                    {"type": "file", "path": metainfo_name},
+                ],
+            }
+        ],
+    }
+    write(
+        args.output,
+        f"packaging/flatpak/{app_id}.json",
+        json.dumps(flatpak_manifest, ensure_ascii=False, indent=2) + "\n",
+    )
+
+    write(args.output, "packaging/snap/snap/snapcraft.yaml", f'''
+        name: caphetamine
+        base: core24
+        version: '{version}'
+        summary: Prevent Linux sleep while Caps Lock is on
+        description: |
+          Caphetamine keeps the computer awake while Caps Lock is on and restores
+          the normal power settings as soon as Caps Lock is turned off.
+        grade: stable
+        confinement: strict
+
+        platforms:
+          amd64:
+          arm64:
+
+        apps:
+          caphetamine:
+            command: bin/caphetamine
+            desktop: share/applications/caphetamine.desktop
+            common-id: {app_id}
+            plugs:
+              - desktop
+              - desktop-legacy
+              - wayland
+              - x11
+              - hardware-observe
+              - login-session-control
+              - screen-inhibit-control
+              - autostart-config
+
+        plugs:
+          autostart-config:
+            interface: personal-files
+            write:
+              - $HOME/.config/autostart/caphetamine.desktop
+
+        parts:
+          caphetamine:
+            plugin: nil
+            build-packages:
+              - ca-certificates
+              - curl
+            override-pull: |
+              case "$CRAFT_ARCH_BUILD_FOR" in
+                amd64)
+                  asset='{x64}'
+                  checksum='{assets[x64]['sha256']}'
+                  ;;
+                arm64)
+                  asset='{arm64}'
+                  checksum='{assets[arm64]['sha256']}'
+                  ;;
+                *)
+                  echo "Unsupported architecture: $CRAFT_ARCH_BUILD_FOR" >&2
+                  exit 1
+                  ;;
+              esac
+              curl --fail --location --retry 3 \\
+                "{release}/$asset" --output caphetamine.tar.gz
+              printf '%s  %s\\n' "$checksum" caphetamine.tar.gz | sha256sum --check -
+              tar --extract --gzip --file caphetamine.tar.gz --strip-components=1
+            override-build: |
+              install -Dm755 bin/caphetamine "$CRAFT_PART_INSTALL/bin/caphetamine"
+              install -Dm644 share/applications/caphetamine.desktop \\
+                "$CRAFT_PART_INSTALL/share/applications/caphetamine.desktop"
+              install -Dm644 share/icons/hicolor/scalable/apps/caphetamine.svg \\
+                "$CRAFT_PART_INSTALL/share/icons/hicolor/scalable/apps/caphetamine.svg"
+    ''')
+
     write(args.output, "manifests/latest.json", json.dumps(manifest, ensure_ascii=False, indent=2) + "\n")
 
 
