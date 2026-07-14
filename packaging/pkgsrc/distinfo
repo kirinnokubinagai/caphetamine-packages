@@ -1,0 +1,8 @@
+$NetBSD$
+
+BLAKE2s (caphetamine-linux-x86_64.tar.gz) = 034672dc72d6e2cfb61266ea0ae36d2eb28c9aaaf5d09f420ebaee70ab182b26
+SHA512 (caphetamine-linux-x86_64.tar.gz) = fa09fbd4c5990fbcbb945c67782f0872151556fd1340123c486a46a2a9210b8078cd8a0c3a8f1c23192e09ba2d9d629eb7a56b5c4aaa7cf8c2249d8bb1f75fa5
+Size (caphetamine-linux-x86_64.tar.gz) = 1269510 bytes
+BLAKE2s (caphetamine-linux-aarch64.tar.gz) = c33ac77c17c66f646faec0610b09139a01784220ad2ac21f68f6416e46f6966b
+SHA512 (caphetamine-linux-aarch64.tar.gz) = 57dcb24d38187ff8349e7c65545c6cde8d9f2ac6a5f717f17ff2eaf9c472793e2b6f5cc05f428131b72f96fca0e893704cac2ddfa7898e020ba066e3a787ddc9
+Size (caphetamine-linux-aarch64.tar.gz) = 1205873 bytes

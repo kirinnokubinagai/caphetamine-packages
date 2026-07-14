@@ -1,0 +1,4 @@
+@comment $NetBSD$
+bin/caphetamine
+share/applications/caphetamine.desktop
+share/icons/hicolor/scalable/apps/caphetamine.svg
