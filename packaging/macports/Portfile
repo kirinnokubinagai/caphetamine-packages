@@ -1,17 +1,17 @@
 PortSystem          1.0
 name                caphetamine
-version             1.0.0
+version             1.0.1
 categories          aqua sysutils
 platforms           darwin
 license             Restrictive
 maintainers         nomaintainer
 description         Prevent macOS sleep while Caps Lock is on
 homepage            https://github.com/kirinnokubinagai/caphetamine-packages
-master_sites        https://github.com/kirinnokubinagai/caphetamine-packages/releases/download/v1.0.0
+master_sites        https://github.com/kirinnokubinagai/caphetamine-packages/releases/download/v1.0.1
 distname            Caphetamine-macos-universal
 extract.suffix      .zip
 worksrcdir          .
-checksums           sha256 6dc9fb04842bf28402c7831c9ad55cd0570f4df00057a4c0019c0b804979a807 \
+checksums           sha256 614346893e20968c861c29fe328ab1d70a174c9acb9eacf1bbe04f44243c3daa \
                     size 130765
 use_configure       no
 build {}

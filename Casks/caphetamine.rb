@@ -1,8 +1,8 @@
 cask "caphetamine" do
-  version "1.0.0"
-  sha256 "4191be8d97060ae8232298f61565309a41df7ef054f0207d26ea792bce989229"
+  version "1.0.1"
+  sha256 "cc3c083e7245d473f56f8ce40d9fa5573af79b0ee5beeca27176e03ee79949b9"
 
-  url "https://github.com/kirinnokubinagai/caphetamine-packages/releases/download/v1.0.0/Caphetamine-macos-universal.dmg"
+  url "https://github.com/kirinnokubinagai/caphetamine-packages/releases/download/v1.0.1/Caphetamine-macos-universal.dmg"
   name "Caphetamine"
   desc "Prevent sleep while Caps Lock is on"
   homepage "https://github.com/kirinnokubinagai/caphetamine-packages"

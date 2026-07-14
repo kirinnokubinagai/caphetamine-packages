@@ -1,56 +1,56 @@
 {
   "schema": 1,
-  "version": "1.0.0",
-  "tag": "v1.0.0",
+  "version": "1.0.1",
+  "tag": "v1.0.1",
   "repository": "kirinnokubinagai/caphetamine-packages",
   "assets": {
     "Caphetamine-macos-universal.zip": {
       "size": 130765,
-      "sha256": "6dc9fb04842bf28402c7831c9ad55cd0570f4df00057a4c0019c0b804979a807",
-      "sha256_sri": "sha256-bcn7BIQr8oQCx4McmtVc0FcPTfAAV6TAAZwLgEl5qAc=",
-      "sha512": "00ab7febd6997c635a28a11501189e614e4ebf075059258f7ab6f6d9388c358de281c027b1d005ee1589ab3e52c7e553d7635aaad060c73c642a3c4873815abe",
-      "blake2s": "84428c621fd2b5975ed685b81e1f42870a7fd7f56a9a59907a931a6499dc4a3f",
-      "blake2b": "c710fe07632c57ddf7becbf84eaa5d3ae832794152eb9ff76d55378fd64f0118456734efaf22b43c1e9319c1a988b4612576a5e68ec253bec3aa76d18a652436"
+      "sha256": "614346893e20968c861c29fe328ab1d70a174c9acb9eacf1bbe04f44243c3daa",
+      "sha256_sri": "sha256-YUNGiT4gloyGHCn+Moqx1woXTJrLnqzxu+BPRCQ8Pao=",
+      "sha512": "ea918fb847fa8fe4a389b7be7b502a297dd1a8583ffe49ac11d7de454d9af0507f86b7423470b36f996ee60e9ffa6e27aa233ace6c346b201cf46c6bb848bd6b",
+      "blake2s": "9c865a83a1a99777640e5d471cb148991cdcc6ee9bd0a40b750742d71ad8cafe",
+      "blake2b": "5544bf94d6ab8896395a6721fed0522d9ab8551aff878503f8c5ed58ac24481db09ae8c065420516c1d5eff51f0a99e5508c1a96eb7a6ca6365335428f4a6232"
     },
     "Caphetamine-macos-universal.dmg": {
-      "size": 160096,
-      "sha256": "4191be8d97060ae8232298f61565309a41df7ef054f0207d26ea792bce989229",
-      "sha256_sri": "sha256-QZG+jZcGCugjIpj2FWUwmkHffvBU8CB9Jup5K86Ykik=",
-      "sha512": "3fa59d3a5d330d18c6bdf2b339482bb75aa9a30c083f1857ca5cf75ca0ca46f152b1ca49bd227ccb81252599f71f20be941b8e0d7f4bca60cdfe5f6b92b3fa0c",
-      "blake2s": "21efa2faa4d4d95e32bc44d161825cd0834754ccd9f0fcc69e686a06e4035497",
-      "blake2b": "903942f19b47ff5a10452a421af6b0bb4afaa8c30119ca4b0454c6c247f0f67c41f128cd97c1b4efcca47d5e1436a038ac4ebc1a3c077a791a6c37b5b515936f"
+      "size": 160088,
+      "sha256": "cc3c083e7245d473f56f8ce40d9fa5573af79b0ee5beeca27176e03ee79949b9",
+      "sha256_sri": "sha256-zDwIPnJF1HP1b4zkDZ+lVzr3mw7lvuyicXbgPueZSbk=",
+      "sha512": "356376f863df7b3fc64005048963a10028fbb0f846f8a3c2872f4427df0944b734dd68554f96c4b5f1b246c68908eeec57a4e0f22ffe2d73894ecb9e83bab24c",
+      "blake2s": "655140a53ec82d1d31e5bbf2681de2d59fc55cf00849b92b54b94456735cd06d",
+      "blake2b": "234c69f03ab944d50a8e16d46a441257a42afc14a0c742b8fb1fa53b190ab8b902cc31bf2f04f009065a11a510cb77d787a60183eaa748b5fb5da908456f8e60"
     },
     "caphetamine-linux-x86_64.tar.gz": {
-      "size": 1269510,
-      "sha256": "d7b986ce38f915e764e19391e88fd1d5a265835c2c44dcb0d70bc700a1ebffa9",
-      "sha256_sri": "sha256-17mGzjj5Fedk4ZOR6I/R1aJlg1wsRNyw1wvHAKHr/6k=",
-      "sha512": "fa09fbd4c5990fbcbb945c67782f0872151556fd1340123c486a46a2a9210b8078cd8a0c3a8f1c23192e09ba2d9d629eb7a56b5c4aaa7cf8c2249d8bb1f75fa5",
-      "blake2s": "034672dc72d6e2cfb61266ea0ae36d2eb28c9aaaf5d09f420ebaee70ab182b26",
-      "blake2b": "2d1edff1bd77c2c76c58dcd3c3f4e33438badaaf805af037bebef3eea7b86c149564bbc8a0dd4a88073b4563c608c3f028d73edf0e8de47a22d0be71d94df8fb"
+      "size": 1270380,
+      "sha256": "6bef25674d9422da359f62d84c41de9b0e1fdc8b2ae2fcc050d8d7485c1eb762",
+      "sha256_sri": "sha256-a+8lZ02UIto1n2LYTEHemw4f3Isq4vzAUNjXSFwet2I=",
+      "sha512": "f3c4ef2986eb23e7585852c16b6ecfd5e5656ab2cf41d839508aac930b079a6446079552d0cb9e8e1d673ebde2f911d8342a20709a6fce4880ff44bf12bf8942",
+      "blake2s": "efa2def8b33bbbf171542f6e67d13349a03da77f22d837ba7134bb9e1fa00044",
+      "blake2b": "bf67056d49ce9aa6e1c143e31d58a7ec2b24e2814cf137c44462867f5c1d4f53f979b2d7e2dfb9cd8bb3882edcdc48dc5c198b2b6b998dff7b242d0b9cb0f708"
     },
     "caphetamine-linux-aarch64.tar.gz": {
-      "size": 1205873,
-      "sha256": "3c0b1f9b1e249cacf6268039df785352054b84b117c9dcf46d563fba0762f2b3",
-      "sha256_sri": "sha256-PAsfmx4knKz2JoA533hTUgVLhLEXydz0bVY/ugdi8rM=",
-      "sha512": "57dcb24d38187ff8349e7c65545c6cde8d9f2ac6a5f717f17ff2eaf9c472793e2b6f5cc05f428131b72f96fca0e893704cac2ddfa7898e020ba066e3a787ddc9",
-      "blake2s": "c33ac77c17c66f646faec0610b09139a01784220ad2ac21f68f6416e46f6966b",
-      "blake2b": "f983065931496e531db2d1241f05f0c65438b933ad284ec94e7becf7dd9e9277766dd9344517af32751b0b3ba0e85517240f36af7fd8c82605743b140d09616f"
+      "size": 1206373,
+      "sha256": "1990091e74ef2d52a6d9e3867911abde1961cd43608a1f016277fa59f359761b",
+      "sha256_sri": "sha256-GZAJHnTvLVKm2eOGeRGr3hlhzUNgih8BYnf6WfNZdhs=",
+      "sha512": "388bdc18c254106af9ef1e9b32ec927fbdf406e6430b0ad6f349c54f5645c74a52d536721a139e159c9f81084fc18f908776f402728589bddbae142da0c7714d",
+      "blake2s": "14f9c47ef51a2889ded9e4ed286e9a0371d10d503a4de4c0a645800df8294dcf",
+      "blake2b": "40ff594b085b906ef13256a5683b51599415518fa0b588b538a150b9c7ae2a401ae913cb0314e8f661437b2777600e1863ce95208c937a7a441ecff52ead74be"
     },
     "caphetamine-linux-x86_64-musl.tar.gz": {
-      "size": 1337729,
-      "sha256": "c73472ce99ab9b6dec7b17316e7139079dddcf5a636b83f1461c95d8e21722a0",
-      "sha256_sri": "sha256-xzRyzpmrm23sexcxbnE5B53dz1pja4PxRhyV2OIXIqA=",
-      "sha512": "7f51c6c41ac73977a843a22df3ae2bcd859b38b0d82d3b12a60ed59c5bc001690fd53a5bb976b538b51eb5f12ba4fc6e8748a7794cbe87f9d78cc8ab9c3eed3c",
-      "blake2s": "45724ab4adf07f24b6af6613e404197895074c7cbec9bdd0beba426b1ad642a2",
-      "blake2b": "2db1afa120366da688e857dbb1701d8bc56475cd12d05e785a6e96405f42da07c47c045e6c2ede679cff6671cce3bacc38944b690d2ce31240eb103183e9ceab"
+      "size": 1338500,
+      "sha256": "0805b31a9ab504b1bc1c6b69dc0a4c23b2ad6d37fc2ceb1c376d9d6649b3862f",
+      "sha256_sri": "sha256-CAWzGpq1BLG8HGtp3ApMI7KtbTf8LOscN22dZkmzhi8=",
+      "sha512": "82dd1e5f03f327d0ed7ca5f2908b075ba65c7ced2ea1e2050c4e64dad19deaab4d89a41737f73d2587fe91a0cbaf862f5f239a20df3252ce52a0274335574f1e",
+      "blake2s": "93a2ceb9ac344590722ac3c83e13b6a54328f8a5504ba54fa5a4f5a47b35e0e4",
+      "blake2b": "3a3ea79f68c847511e4865427bbfb6a55f0d2ec594be3203907200f9b5d7e454bd7905c04c45c7984057ea35ee30f64a5ef188cd10048fb36b9102c1ab793204"
     },
     "caphetamine-linux-aarch64-musl.tar.gz": {
-      "size": 1272746,
-      "sha256": "c56e739c5f1e1097e62002b8df69d141bd6813a2572f164cfcb834b5e543116b",
-      "sha256_sri": "sha256-xW5znF8eEJfmIAK432nRQb1oE6JXLxZM/Lg0teVDEWs=",
-      "sha512": "c0a74299ca588f0ae0792143c4995420f94b92e6bac251c40f0c71ce63e0cc86b8644083eace577b299e3caea9b56a2c25877dfa28f9f11cb0f421029eef112d",
-      "blake2s": "13af7a45119e5b1d86f213c95ce18abd39121594e4386d1d3bccca11bc5db4bc",
-      "blake2b": "585e8ae56febd649925e51318bc122ae74752f6811982c0cbf7dfcb5dde17662a514849344efdf9fdcdab3222b2a50c095e220dd227b191a310a951f31d5d13a"
+      "size": 1273252,
+      "sha256": "acfeb92965e75fa9c065121fd9eb2286015331abaf6426f74cfa3d02eb4b766e",
+      "sha256_sri": "sha256-rP65KWXnX6nAZRIf2esihgFTMauvZCb3TPo9AutLdm4=",
+      "sha512": "9df92aa086012857fbbfc89ec7ec322d04d14b140477ae4c4a835f0cff6dc5d79b787cd9425da3bbc1dd0354b9ae2bc18fb9db0fd046dbba933618cb105f10a1",
+      "blake2s": "49cfe107e892cb80cd9ce4ddcb31189865a63b03cc5c1ad4cf4fabedd20a3820",
+      "blake2b": "a69a2ba5183a7b9ce1f398dea9af3b1f628351053137f7cca0e05829633f20e8f3133478dad9270576ead26ff6a7979005a634a58002488505e80e61d959200d"
     }
   }
 }

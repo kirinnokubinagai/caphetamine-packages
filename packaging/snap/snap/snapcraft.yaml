@@ -1,6 +1,6 @@
 name: caphetamine
 base: core24
-version: '1.0.0'
+version: '1.0.1'
 summary: Prevent Linux sleep while Caps Lock is on
 description: |
   Caphetamine keeps the computer awake while Caps Lock is on and restores
@@ -43,11 +43,11 @@ parts:
       case "$CRAFT_ARCH_BUILD_FOR" in
         amd64)
           asset='caphetamine-linux-x86_64.tar.gz'
-          checksum='d7b986ce38f915e764e19391e88fd1d5a265835c2c44dcb0d70bc700a1ebffa9'
+          checksum='6bef25674d9422da359f62d84c41de9b0e1fdc8b2ae2fcc050d8d7485c1eb762'
           ;;
         arm64)
           asset='caphetamine-linux-aarch64.tar.gz'
-          checksum='3c0b1f9b1e249cacf6268039df785352054b84b117c9dcf46d563fba0762f2b3'
+          checksum='1990091e74ef2d52a6d9e3867911abde1961cd43608a1f016277fa59f359761b'
           ;;
         *)
           echo "Unsupported architecture: $CRAFT_ARCH_BUILD_FOR" >&2
@@ -55,7 +55,7 @@ parts:
           ;;
       esac
       curl --fail --location --retry 3 \
-        "https://github.com/kirinnokubinagai/caphetamine-packages/releases/download/v1.0.0/$asset" --output caphetamine.tar.gz
+        "https://github.com/kirinnokubinagai/caphetamine-packages/releases/download/v1.0.1/$asset" --output caphetamine.tar.gz
       printf '%s  %s\n' "$checksum" caphetamine.tar.gz | sha256sum --check -
       tar --extract --gzip --file caphetamine.tar.gz --strip-components=1
     override-build: |
