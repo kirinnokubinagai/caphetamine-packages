@@ -1,0 +1,40 @@
+name: Verify
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  definitions:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run generator tests
+        run: python3 -m unittest discover -s tests -v
+      - name: Check shell scripts
+        run: shellcheck scripts/*.sh
+      - name: Check Python syntax
+        run: python3 -m compileall -q scripts tests
+
+  homebrew:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate fixture definitions
+        run: |
+          mkdir -p /tmp/assets /tmp/generated
+          for name in \
+            Caphetamine-macos-universal.zip \
+            Caphetamine-macos-universal.dmg \
+            caphetamine-linux-x86_64.tar.gz \
+            caphetamine-linux-aarch64.tar.gz \
+            caphetamine-linux-x86_64-musl.tar.gz \
+            caphetamine-linux-aarch64-musl.tar.gz; do
+            printf '%s' "$name" > "/tmp/assets/$name"
+          done
+          python3 scripts/create_manifest.py --version 1.2.3 --assets /tmp/assets --output /tmp/manifest.json
+          python3 scripts/generate_definitions.py /tmp/manifest.json --output /tmp/generated
+          brew style /tmp/generated/Casks/caphetamine.rb /tmp/generated/Formula/caphetamine.rb
