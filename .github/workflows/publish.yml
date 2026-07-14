@@ -65,7 +65,7 @@ jobs:
       - name: Build Flatpak bundle
         run: |
           manifest="build/definitions/packaging/flatpak/io.github.kirinnokubinagai.Caphetamine.json"
-          flatpak-builder --user --force-clean \
+          flatpak-builder --user --force-clean --default-branch=stable \
             --repo=build/flatpak-repository \
             build/flatpak-work "$manifest"
           mkdir -p build/output
