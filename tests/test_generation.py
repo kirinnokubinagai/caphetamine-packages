@@ -24,6 +24,7 @@ class GenerationTests(unittest.TestCase):
             assets.mkdir()
             for name in REQUIRED:
                 (assets / name).write_bytes(f"fixture:{name}".encode())
+            (assets / "caphetamine_1.2.3_amd64.deb").write_bytes(b"generated package")
 
             manifest = work / "manifest.json"
             subprocess.run(

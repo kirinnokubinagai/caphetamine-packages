@@ -37,7 +37,11 @@ def main() -> None:
         raise SystemExit(f"missing required assets: {', '.join(missing)}")
 
     assets = {}
-    for path in sorted(item for item in args.assets.iterdir() if item.is_file()):
+    # Generated native packages and this manifest are uploaded to the same Release.
+    # Only the immutable base archives belong here, otherwise every rerun changes
+    # the manifest by hashing the previous run's generated artifacts.
+    for name in REQUIRED_ASSETS:
+        path = args.assets / name
         sha256 = digest(path, "sha256")
         assets[path.name] = {
             "size": path.stat().st_size,
