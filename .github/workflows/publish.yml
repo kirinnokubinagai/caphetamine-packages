@@ -28,13 +28,14 @@ jobs:
       url: ${{ steps.pages.outputs.page_url }}
     env:
       RELEASE_TAG: ${{ github.event.release.tag_name || inputs.tag }}
-      GH_TOKEN: ${{ github.token }}
+      GH_TOKEN: ${{ secrets.PACKAGE_UPDATE_TOKEN }}
       GPG_KEY_ID: ${{ secrets.PACKAGE_GPG_KEY_ID }}
       GPG_PASSPHRASE: ${{ secrets.PACKAGE_GPG_PASSPHRASE }}
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ secrets.PACKAGE_UPDATE_TOKEN }}
 
       - name: Install repository tools
         run: |
