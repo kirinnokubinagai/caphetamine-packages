@@ -1,0 +1,6 @@
+build/
+dist/
+public/
+result
+.DS_Store
+__pycache__/

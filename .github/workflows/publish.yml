@@ -1,0 +1,170 @@
+name: Publish package repositories
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing release tag containing the base archives
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: publish-${{ github.event.release.tag_name || inputs.tag }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    environment:
+      name: github-pages
+      url: ${{ steps.pages.outputs.page_url }}
+    env:
+      RELEASE_TAG: ${{ github.event.release.tag_name || inputs.tag }}
+      GH_TOKEN: ${{ github.token }}
+      GPG_KEY_ID: ${{ secrets.PACKAGE_GPG_KEY_ID }}
+      GPG_PASSPHRASE: ${{ secrets.PACKAGE_GPG_PASSPHRASE }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install repository tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes createrepo-c dpkg-dev gnupg rpm
+          go install github.com/goreleaser/nfpm/v2/cmd/nfpm@v2.47.0
+
+      - name: Import signing keys
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.PACKAGE_GPG_PRIVATE_KEY_B64 }}
+          APK_PRIVATE_KEY: ${{ secrets.PACKAGE_APK_PRIVATE_KEY_B64 }}
+        run: |
+          test -n "$GPG_PRIVATE_KEY"
+          test -n "$APK_PRIVATE_KEY"
+          mkdir -p build/keys
+          printf '%s' "$GPG_PRIVATE_KEY" | base64 --decode > build/keys/packages.gpg
+          printf '%s' "$APK_PRIVATE_KEY" | base64 --decode > build/keys/caphetamine.rsa
+          chmod 600 build/keys/*
+          gpg --batch --import build/keys/packages.gpg
+          openssl rsa -in build/keys/caphetamine.rsa \
+            -pubout -out build/keys/caphetamine.rsa.pub
+
+      - name: Download base release assets
+        run: |
+          mkdir -p build/assets
+          gh release download "$RELEASE_TAG" --dir build/assets
+          version="${RELEASE_TAG#v}"
+          python3 scripts/create_manifest.py \
+            --version "$version" \
+            --assets build/assets \
+            --output build/manifest.json
+
+      - name: Generate native packages
+        env:
+          RPM_SIGNING_KEY: ${{ github.workspace }}/build/keys/packages.gpg
+          APK_SIGNING_KEY: ${{ github.workspace }}/build/keys/caphetamine.rsa
+          NFPM_RPM_PASSPHRASE: ${{ secrets.PACKAGE_GPG_PASSPHRASE }}
+        run: |
+          gopath="$(go env GOPATH)"
+          export PATH="$gopath/bin:$PATH"
+          scripts/build_native_packages.sh "$RELEASE_TAG" build/assets build/packages
+
+      - name: Build signed APT and RPM repositories
+        run: scripts/build_repository_indexes.sh build/packages public
+
+      - name: Build signed pacman repository
+        run: |
+          gpg_sign() {
+            local args=(--batch --yes --pinentry-mode loopback --local-user "$GPG_KEY_ID")
+            if [[ -n "$GPG_PASSPHRASE" ]]; then
+              args+=(--passphrase "$GPG_PASSPHRASE")
+            fi
+            gpg "${args[@]}" "$@"
+          }
+          for arch in x86_64 aarch64; do
+            mkdir -p "public/arch/$arch"
+            find build/packages -maxdepth 1 -name "*-$arch.pkg.tar.zst" \
+              -exec cp {} "public/arch/$arch/" \;
+            for package in "public/arch/$arch"/*.pkg.tar.zst; do
+              gpg_sign \
+                --detach-sign --output "$package.sig" "$package"
+            done
+            docker run --rm \
+              -v "$PWD/public/arch/$arch:/repo" \
+              archlinux:base \
+              bash -euc 'repo-add /repo/caphetamine.db.tar.zst /repo/*.pkg.tar.zst'
+            gpg_sign \
+              --detach-sign --output "public/arch/$arch/caphetamine.db.tar.zst.sig" \
+              "public/arch/$arch/caphetamine.db.tar.zst"
+          done
+
+      - name: Build signed Alpine repository
+        run: |
+          for arch in x86_64 aarch64; do
+            mkdir -p "public/alpine/$arch"
+            find build/packages -maxdepth 1 -name "*_${arch}.apk" \
+              -exec cp {} "public/alpine/$arch/" \;
+            docker run --rm \
+              -v "$PWD/public/alpine/$arch:/repo" \
+              -v "$PWD/build/keys:/keys:ro" \
+              alpine:edge \
+              sh -euc 'apk add --no-cache alpine-sdk >/dev/null; apk index -o /repo/APKINDEX.tar.gz /repo/*.apk; abuild-sign -k /keys/caphetamine.rsa /repo/APKINDEX.tar.gz'
+          done
+          cp build/keys/caphetamine.rsa.pub public/keys/caphetamine.rsa.pub
+
+      - name: Publish package assets and checksums
+        run: |
+          cp build/manifest.json "build/packages/manifest-${RELEASE_TAG#v}.json"
+          (
+            cd build/packages
+            sha256sum -- * > SHA256SUMS-packages
+          )
+          gh release upload "$RELEASE_TAG" build/packages/* --clobber
+
+      - name: Generate versioned package definitions
+        run: |
+          rm -rf Casks Formula flake.nix flake.lock manifests packaging
+          python3 scripts/generate_definitions.py build/manifest.json --output .
+
+      - uses: cachix/install-nix-action@v31
+
+      - name: Lock and verify generated definitions
+        run: |
+          nix flake lock
+          python3 -m unittest discover -s tests -v
+
+      - name: Open package update pull request
+        run: |
+          branch="release/${RELEASE_TAG#v}"
+          git switch -C "$branch"
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add Casks Formula flake.nix flake.lock manifests packaging
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "${RELEASE_TAG}のパッケージ定義を更新"
+          git push --force-with-lease origin "$branch"
+          url="$(gh pr list --head "$branch" --json url --jq '.[0].url')"
+          if [[ -z "$url" ]]; then
+            url="$(gh pr create --base main --head "$branch" \
+              --title "${RELEASE_TAG}のパッケージ定義を更新" \
+              --body "Release ${RELEASE_TAG}の署名・checksumから全パッケージ定義を生成しました。")"
+          fi
+          gh pr merge "$url" --auto --squash --delete-branch
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+      - name: Deploy package repositories
+        id: pages
+        uses: actions/deploy-pages@v4
