@@ -312,7 +312,6 @@ def main() -> None:
             "--system-talk-name=org.freedesktop.login1",
             "--talk-name=org.freedesktop.ScreenSaver",
             "--talk-name=org.kde.StatusNotifierWatcher",
-            "--own-name=org.kde.StatusNotifierItem-*",
             "--filesystem=xdg-config/autostart:create",
         ],
         "modules": [
