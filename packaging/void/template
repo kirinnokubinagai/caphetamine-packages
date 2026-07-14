@@ -1,0 +1,21 @@
+pkgname=caphetamine
+version=1.0.0
+revision=1
+archs="x86_64 aarch64"
+short_desc="Prevent Linux sleep while Caps Lock is on"
+maintainer="Caphetamine <noreply@github.com>"
+license="custom:Proprietary"
+homepage="https://github.com/kirinnokubinagai/caphetamine-packages"
+case "$XBPS_TARGET_MACHINE" in
+  x86_64) _asset="caphetamine-linux-x86_64.tar.gz"; checksum="d7b986ce38f915e764e19391e88fd1d5a265835c2c44dcb0d70bc700a1ebffa9" ;;
+  x86_64-musl) _asset="caphetamine-linux-x86_64-musl.tar.gz"; checksum="c73472ce99ab9b6dec7b17316e7139079dddcf5a636b83f1461c95d8e21722a0" ;;
+  aarch64) _asset="caphetamine-linux-aarch64.tar.gz"; checksum="3c0b1f9b1e249cacf6268039df785352054b84b117c9dcf46d563fba0762f2b3" ;;
+  aarch64-musl) _asset="caphetamine-linux-aarch64-musl.tar.gz"; checksum="c56e739c5f1e1097e62002b8df69d141bd6813a2572f164cfcb834b5e543116b" ;;
+esac
+distfiles="https://github.com/kirinnokubinagai/caphetamine-packages/releases/download/v1.0.0/${_asset}"
+
+do_install() {
+  vbin */bin/caphetamine
+  vinstall */share/applications/caphetamine.desktop 644 usr/share/applications
+  vinstall */share/icons/hicolor/scalable/apps/caphetamine.svg 644 usr/share/icons/hicolor/scalable/apps
+}

@@ -1,0 +1,144 @@
+{
+  "schema": 1,
+  "version": "1.0.0",
+  "tag": "v1.0.0",
+  "repository": "kirinnokubinagai/caphetamine-packages",
+  "assets": {
+    "Caphetamine-macos-universal.dmg": {
+      "size": 160096,
+      "sha256": "4191be8d97060ae8232298f61565309a41df7ef054f0207d26ea792bce989229",
+      "sha256_sri": "sha256-QZG+jZcGCugjIpj2FWUwmkHffvBU8CB9Jup5K86Ykik=",
+      "sha512": "3fa59d3a5d330d18c6bdf2b339482bb75aa9a30c083f1857ca5cf75ca0ca46f152b1ca49bd227ccb81252599f71f20be941b8e0d7f4bca60cdfe5f6b92b3fa0c",
+      "blake2s": "21efa2faa4d4d95e32bc44d161825cd0834754ccd9f0fcc69e686a06e4035497",
+      "blake2b": "903942f19b47ff5a10452a421af6b0bb4afaa8c30119ca4b0454c6c247f0f67c41f128cd97c1b4efcca47d5e1436a038ac4ebc1a3c077a791a6c37b5b515936f"
+    },
+    "Caphetamine-macos-universal.zip": {
+      "size": 130765,
+      "sha256": "6dc9fb04842bf28402c7831c9ad55cd0570f4df00057a4c0019c0b804979a807",
+      "sha256_sri": "sha256-bcn7BIQr8oQCx4McmtVc0FcPTfAAV6TAAZwLgEl5qAc=",
+      "sha512": "00ab7febd6997c635a28a11501189e614e4ebf075059258f7ab6f6d9388c358de281c027b1d005ee1589ab3e52c7e553d7635aaad060c73c642a3c4873815abe",
+      "blake2s": "84428c621fd2b5975ed685b81e1f42870a7fd7f56a9a59907a931a6499dc4a3f",
+      "blake2b": "c710fe07632c57ddf7becbf84eaa5d3ae832794152eb9ff76d55378fd64f0118456734efaf22b43c1e9319c1a988b4612576a5e68ec253bec3aa76d18a652436"
+    },
+    "SHA256SUMS": {
+      "size": 600,
+      "sha256": "3451bacfc29bebf0cec410344cc45792784d71e63b34ce7dd1ec21818b45e0ad",
+      "sha256_sri": "sha256-NFG6z8Kb6/DOxBA0TMRXknhNceY7NM590ewhgYtF4K0=",
+      "sha512": "28509c175a29bafa1b52207c42a211498fedf40cfc3caa463bd07bce02599a6bee14a990888ba82ab35d64469a33bc0ea63526bee0f99a8dbeb1028592a6aed4",
+      "blake2s": "eb048b7e7882cd56394c2a61f96170520771c5c1070750f8b9b5e81849c044b6",
+      "blake2b": "27a33c6b5cc41663f84b9b21502bcabb1e46e00c924c3fc9c3b3df0c0d26e3ab867af5d6d428814f062dc95bf45e216fd17acf29f8a48b07a4c5a6929e77e26f"
+    },
+    "SHA256SUMS-packages": {
+      "size": 881,
+      "sha256": "d4221ff360b71a83263f723fadc6964d193a1a0aa8ebb3dbee52fec7f7c3092b",
+      "sha256_sri": "sha256-1CIf82C3GoMmP3I/rcaWTRk6Ggqo67Pb7lL+x/fDCSs=",
+      "sha512": "66fcf37c3f6d96549926a9bf5d66ba1b8486a69033fbdaa85793629cbb5b4c3bfb59e1e55472f2877ac2d8489610ca4c8c47cb7b6d8224c2924320956e220cda",
+      "blake2s": "4b93f0b965e761ad13cb458361b57fab1b2b161140c6c226c697518b976cb5d0",
+      "blake2b": "f3947b6a7048d8660314abbebf0d3a541142360339771fef128702b53ac86cc4cf81a4fc228b6161fa66e02fb4a3e691e7401efee5e4d26407f17e8a3920968a"
+    },
+    "caphetamine-1.0.0-1-aarch64.pkg.tar.zst": {
+      "size": 1182833,
+      "sha256": "4a9978d42a435195b4cfbe3630da11fb46443a9810cf1fa96c527457970b577c",
+      "sha256_sri": "sha256-Spl41CpDUZW0z742MNoR+0ZEOpgQzx+pbFJ0V5cLV3w=",
+      "sha512": "14b19e917c5f3074d78d194160561c0019e33e895a9ef14d1e2e50e5de7ec41819ef2748f96451d04a9fba2527b861b2ea594cd2b224fef13c096ed5dc1cb50f",
+      "blake2s": "0c0e87802143de9157928e0d41d600e9a0415702c3a0418eb3eefd74940ad60b",
+      "blake2b": "a75f5f9eb253e24ebb420a263fa94b68f7b9440906e482a9e6180693b60ef669745a37665ef43db5ee590267e4dbac0659605331b0ee08c584984dded7e17e0b"
+    },
+    "caphetamine-1.0.0-1-x86_64.pkg.tar.zst": {
+      "size": 1227855,
+      "sha256": "17a5f49a0534d07494f8ca5af266983a056a3667a520fe0ccf96868e14e0f3c3",
+      "sha256_sri": "sha256-F6X0mgU00HSU+Mpa8maYOgVqNmelIP4Mz5aGjhTg88M=",
+      "sha512": "ca268a500b09ec735c04bd08060b26788a29fb6fe46333a007f7fc323ee50b167e370885a7496b622a32c788727c292fed2602721519e68e6ea7711830106f6e",
+      "blake2s": "b79fb43abdecc6ce41a83e8edd872f1cbc1dbc174b0f8335e467498458f33d97",
+      "blake2b": "6e0b625e77555cc1e8dab4e5a45379cc47f6a6d11872b92f67275448c4769974d2f19493b5115ff6a27c9e19b7e589a4a4211c654b23c657df180603285fed49"
+    },
+    "caphetamine-1.0.0-1.aarch64.rpm": {
+      "size": 1245622,
+      "sha256": "79adb9b6e578e7957a816bb9cf6b1d802088971c62273ddf55b9c3a74b1f7335",
+      "sha256_sri": "sha256-ea25tuV455V6gWu5z2sdgCCIlxxiJz3fVbnDp0sfczU=",
+      "sha512": "880c3aa545c0455227f3f0cdf09c4699ccbce8b16eac23788fad2f2c973e15215293df012a630892b9b6b2e509b5d510059829d530b484db0936a42afdb7f357",
+      "blake2s": "2dc151acaee2bc9ee4cde1ec86d00feaa54f0f96d62ceed85cf844155a723364",
+      "blake2b": "3e1c07c41921546b1979fe311d92828df6dba3bd293b2da090ebeb1fcf516c0fb49c73907ecb60282e396bac9258d70df601b64a26bd87b1a444fc4368d10d94"
+    },
+    "caphetamine-1.0.0-1.x86_64.rpm": {
+      "size": 1285925,
+      "sha256": "5008c7302681abfd924a7719a685503f32a4d2fc4f78945fca2009dd746cd036",
+      "sha256_sri": "sha256-UAjHMCaBq/2SSncZpoVQPzKk0vxPeJRfyiAJ3XRs0DY=",
+      "sha512": "50d3419f2deb62fd941db156beea2317a62a68f06da381f6d1569a5fbc55ed0cbfdec6caa7bb212d1753475dfa6db33dd8195e361a09ca63de3503508bd5cb73",
+      "blake2s": "2674cbded8161d99d29c82e19bfb6f769a84782b4a564f957d66946d1782feee",
+      "blake2b": "dedacc1a52238d4b2be86eed5088ce8e478202038f5cdec7434bbc360a09e49f9f74d4db6b36a3606c0362d64740b98189ef65f2a82350037071bc72845df25e"
+    },
+    "caphetamine-linux-aarch64-musl.tar.gz": {
+      "size": 1272746,
+      "sha256": "c56e739c5f1e1097e62002b8df69d141bd6813a2572f164cfcb834b5e543116b",
+      "sha256_sri": "sha256-xW5znF8eEJfmIAK432nRQb1oE6JXLxZM/Lg0teVDEWs=",
+      "sha512": "c0a74299ca588f0ae0792143c4995420f94b92e6bac251c40f0c71ce63e0cc86b8644083eace577b299e3caea9b56a2c25877dfa28f9f11cb0f421029eef112d",
+      "blake2s": "13af7a45119e5b1d86f213c95ce18abd39121594e4386d1d3bccca11bc5db4bc",
+      "blake2b": "585e8ae56febd649925e51318bc122ae74752f6811982c0cbf7dfcb5dde17662a514849344efdf9fdcdab3222b2a50c095e220dd227b191a310a951f31d5d13a"
+    },
+    "caphetamine-linux-aarch64.tar.gz": {
+      "size": 1205873,
+      "sha256": "3c0b1f9b1e249cacf6268039df785352054b84b117c9dcf46d563fba0762f2b3",
+      "sha256_sri": "sha256-PAsfmx4knKz2JoA533hTUgVLhLEXydz0bVY/ugdi8rM=",
+      "sha512": "57dcb24d38187ff8349e7c65545c6cde8d9f2ac6a5f717f17ff2eaf9c472793e2b6f5cc05f428131b72f96fca0e893704cac2ddfa7898e020ba066e3a787ddc9",
+      "blake2s": "c33ac77c17c66f646faec0610b09139a01784220ad2ac21f68f6416e46f6966b",
+      "blake2b": "f983065931496e531db2d1241f05f0c65438b933ad284ec94e7becf7dd9e9277766dd9344517af32751b0b3ba0e85517240f36af7fd8c82605743b140d09616f"
+    },
+    "caphetamine-linux-x86_64-musl.tar.gz": {
+      "size": 1337729,
+      "sha256": "c73472ce99ab9b6dec7b17316e7139079dddcf5a636b83f1461c95d8e21722a0",
+      "sha256_sri": "sha256-xzRyzpmrm23sexcxbnE5B53dz1pja4PxRhyV2OIXIqA=",
+      "sha512": "7f51c6c41ac73977a843a22df3ae2bcd859b38b0d82d3b12a60ed59c5bc001690fd53a5bb976b538b51eb5f12ba4fc6e8748a7794cbe87f9d78cc8ab9c3eed3c",
+      "blake2s": "45724ab4adf07f24b6af6613e404197895074c7cbec9bdd0beba426b1ad642a2",
+      "blake2b": "2db1afa120366da688e857dbb1701d8bc56475cd12d05e785a6e96405f42da07c47c045e6c2ede679cff6671cce3bacc38944b690d2ce31240eb103183e9ceab"
+    },
+    "caphetamine-linux-x86_64.tar.gz": {
+      "size": 1269510,
+      "sha256": "d7b986ce38f915e764e19391e88fd1d5a265835c2c44dcb0d70bc700a1ebffa9",
+      "sha256_sri": "sha256-17mGzjj5Fedk4ZOR6I/R1aJlg1wsRNyw1wvHAKHr/6k=",
+      "sha512": "fa09fbd4c5990fbcbb945c67782f0872151556fd1340123c486a46a2a9210b8078cd8a0c3a8f1c23192e09ba2d9d629eb7a56b5c4aaa7cf8c2249d8bb1f75fa5",
+      "blake2s": "034672dc72d6e2cfb61266ea0ae36d2eb28c9aaaf5d09f420ebaee70ab182b26",
+      "blake2b": "2d1edff1bd77c2c76c58dcd3c3f4e33438badaaf805af037bebef3eea7b86c149564bbc8a0dd4a88073b4563c608c3f028d73edf0e8de47a22d0be71d94df8fb"
+    },
+    "caphetamine_1.0.0-1_amd64.deb": {
+      "size": 1293596,
+      "sha256": "547addf0f50e45857ab132adec4d8352eca142c6ab85e366af716326beee9f22",
+      "sha256_sri": "sha256-VHrd8PUORYV6sTKt7E2DUuyhQsarheNmr3FjJr7unyI=",
+      "sha512": "c6ff0a5673c9008690c036182034df7b702dca660aa9a58793bf22c49e97000fe4101f3e1dc597c12fb9ae3e9426c6d67a9f50d2d405a18838b0ec3b350e93c7",
+      "blake2s": "84b9bfcb6148a9d9ee157b64fab2ac7ad64262b93f22fc66fca180989acf555e",
+      "blake2b": "6d62eae389c3bff5188d7ad7237ab70dac6aa5347e855c9798cb1cd671ed5c5ca93d1955f4cbc37ffff947dd84d4e91ed53ab1f301fb531733559e415184202f"
+    },
+    "caphetamine_1.0.0-1_arm64.deb": {
+      "size": 1260598,
+      "sha256": "ee2444e4aa25524b253a2be2c64d614a58c28d2c957f79a374c15f1635f3ecdb",
+      "sha256_sri": "sha256-7iRE5KolUkslOivixk1hSljCjSyVf3mjdMFfFjXz7Ns=",
+      "sha512": "8ad63d3d518e7b6baeb4cf346b50ed8623d67704bae9c152db1206e28b1ffed06b1845c1327ce6234af67f644578d8b9d56d8b974e4cbd608dbf03ea37b18060",
+      "blake2s": "ae314561b0289d22555ba79cec2f5052afda693f7b5422806fe65384a78e0617",
+      "blake2b": "35c43e689bb7ada0659ce603820acd4358998fd800d264905708fe2a644e8c14b46b7198dd4d291c9151ecd4c4c28e395d42a2cb411b87ec8ee4d55634c007a5"
+    },
+    "caphetamine_1.0.0-r1_aarch64.apk": {
+      "size": 1344277,
+      "sha256": "c9b576c30c44fce7e4651ff6b8f33b7ea5679b0a4d681c14b31ff71fe0f9c0cd",
+      "sha256_sri": "sha256-ybV2wwxE/OfkZR/2uPM7fqVnmwpNaBwUsx/3H+D5wM0=",
+      "sha512": "e4009b1bec9904d1678e09a51426384cca79c41dad300be72a824a17b924a39a603e9e1a130711e846e4689bf54dea5dffcc2309ec99ede33a8750342e423a17",
+      "blake2s": "8fcd6bbdbe1b34c6ef569e7e394e55c28a4704fba4fe4b34ff088e588e808641",
+      "blake2b": "ba20c9a216639722943b0bbd7dd6ab91e6a0efd77a66bbaf246863c42e1f94e309b8efcfd0f20387e2ae4c801694064598429e596329704250a674304eb3c5cc"
+    },
+    "caphetamine_1.0.0-r1_x86_64.apk": {
+      "size": 1405386,
+      "sha256": "e5c0b88a56749fd1da4d1382393f7dca8c61bb316df39adae851932878ffb5ab",
+      "sha256_sri": "sha256-5cC4ilZ0n9HaTROCOT99yoxhuzFt85ra6FGTKHj/tas=",
+      "sha512": "12535b6398fe8886b2a4d2278238925f797932c6ddb73e2acb75b1186b799f51d3a81344bb0966958a5b54f31bb179cc89228ab2c489f58e30849ef34aacb201",
+      "blake2s": "70c777e5f77fda1cfcbcbf297c145064dd03f1401bfef424ce96679dc0bf4c66",
+      "blake2b": "17b038b98d643cea4b0f3e6032a6728f8435a68c219f25320f8dccdc07e389e6f09869779242accf1d58d314b706d8af81cd2745991cbcc56c18b8450bd9efb9"
+    },
+    "manifest-1.0.0.json": {
+      "size": 4396,
+      "sha256": "6a05dd8f32b57543b40d3dd65acd89c9c6730936be992b5377bad69402dd1054",
+      "sha256_sri": "sha256-agXdjzK1dUO0DT3WWs2JycZzCTa+mStTd7rWlALdEFQ=",
+      "sha512": "8393b148abf75e2fa42f24bbad1dc0224d4b4849afe087e56038261aeffff497adb4f4f005f115359cfe6163eed7b86ce3bd2a272b3f0789a16c9d043ed809b0",
+      "blake2s": "ddce030905797c8a281c8c2b1f1b679b86f14b761654246bd2052472e821ee2b",
+      "blake2b": "2b6bc06538d292281c2bf1cc354c681a709afb46209fa147da227cc680e8f99660d81f41157f794d77fb55ab8736d555f55555ac82e256b855a1fcf99d8578cf"
+    }
+  }
+}
