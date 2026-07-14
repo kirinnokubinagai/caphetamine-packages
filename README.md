@@ -3,7 +3,7 @@
 Caphetamineの公開バイナリ、署名、checksum、全パッケージマネージャーの定義を管理する単一リポジトリです。本体のソースコードはprivateリポジトリに置き、公開配布に必要なものだけをここへ公開します。
 
 > [!NOTE]
-> 現在は配布基盤の準備中です。最初のReleaseが公開されるまで、以下のインストールコマンドはまだ成功しません。
+> `v1.0.0`を公開済みで、Linuxの署名付きrepositoryと以下のインストールコマンドは利用できます。macOS版は現在ad-hoc署名のため、Developer ID署名とnotarizationが完了するまではGatekeeperの警告が出る場合があります。
 
 ## 対応範囲
 
@@ -153,6 +153,7 @@ FlatpakとSnapは、Caps Lock LEDの`/sys/class/leds`読み取りとlogind inhib
 | `PACKAGE_GPG_KEY_ID` | 署名鍵のfingerprint |
 | `PACKAGE_GPG_PASSPHRASE` | OpenPGP秘密鍵のpassphrase |
 | `PACKAGE_APK_PRIVATE_KEY_B64` | apk署名用のpassphraseなしRSA秘密鍵 |
+| `PACKAGE_UPDATE_TOKEN` | 生成定義のpushとPR作成用token（Contents / Pull requestsを書き込み可） |
 
 ## 開発・検証
 
