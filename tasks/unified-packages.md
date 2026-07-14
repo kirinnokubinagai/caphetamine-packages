@@ -6,4 +6,4 @@
 - [x] 署名付きAPT、RPM、pacman、Alpine repositoryをGitHub Pagesへ生成する
 - [x] root、sudo、doas環境に対応したrepository設定スクリプトを用意する
 - [x] private本体リポジトリから配布定義を分離する
-- [ ] 両リポジトリのCIを通してpushする
+- [x] 両リポジトリのCIを通してpushする

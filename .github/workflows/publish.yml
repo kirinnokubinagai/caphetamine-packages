@@ -116,7 +116,7 @@ jobs:
               -v "$PWD/public/alpine/$arch:/repo" \
               -v "$PWD/build/keys:/keys:ro" \
               alpine:edge \
-              sh -euc 'apk add --no-cache alpine-sdk >/dev/null; apk index -o /repo/APKINDEX.tar.gz /repo/*.apk; abuild-sign -k /keys/caphetamine.rsa /repo/APKINDEX.tar.gz'
+              sh -euc 'apk add --no-cache alpine-sdk >/dev/null; cp /keys/caphetamine.rsa.pub /etc/apk/keys/; apk index -o /repo/APKINDEX.tar.gz /repo/*.apk; abuild-sign -k /keys/caphetamine.rsa /repo/APKINDEX.tar.gz'
           done
           cp build/keys/caphetamine.rsa.pub public/keys/caphetamine.rsa.pub
 
