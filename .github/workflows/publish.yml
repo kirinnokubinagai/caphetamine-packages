@@ -138,6 +138,7 @@ jobs:
 
       - name: Lock and verify generated definitions
         run: |
+          git add flake.nix
           nix flake lock
           python3 -m unittest discover -s tests -v
 
